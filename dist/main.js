@@ -5,7 +5,6 @@ const handleSearch = async function () {
     const cityInput = $("#searchCityInput").val()
     await tempManager.getCityData(cityInput)
     const arr = tempManager.getTemps()
-    console.log(arr)
     renderer.renderTemps(arr)
 }
 const loadPage = async function () {
@@ -13,6 +12,4 @@ const loadPage = async function () {
     renderer.renderTemps(arr)
     $("#searchCityBtn").on("click", handleSearch)
 }
-
-
 loadPage()

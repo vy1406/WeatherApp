@@ -9,14 +9,12 @@ const TempManager = function () {
     // sending a get request to the server to get the array of cities.
     // ToDo: Check
     // -----------------------------
-    const getDataFromDB = function () {
+    const getDataFromDB = async function () {
         console.log("In TempManager: getting the data...")
-        $.get('/cities', async function (result) {
-            // arrTemps = await result.cities
-            arrTemps = result
-            console.log(arrTemps)
-            getTemps()
-        })
+        const result = await $.get('/cities')
+        arrTemps = result
+        console.log(arrTemps)
+        return arrTemps
     }
     // --------------------------------
     // getting data from api thru my server and adding to the arrTemps
@@ -30,20 +28,23 @@ const TempManager = function () {
             updateAt: someCity.current.last_updated,
             temperature: someCity.current.temp_c,
             condition: someCity.current.condition.text,
-            conditionPic: someCity.current.condition.icon
+            conditionPic: someCity.current.condition.icon,
+            isNew: true
         }
         arrTemps.push(city)
     }
+
     // ---------------------------------
     // saving city thru post
     // ! ! !    CHECK   ! ! !
     // ---------------------------------
     const saveCity = async function (argCityName) {
         const city = arrTemps.find(c => c.name === argCityName)
-        const answer = await $.post('/city', { cityName: city.name})
+        const answer = await $.post('/city', { cityName: city.name })
         console.log("in saveCity : ")
         console.log(answer)
     }
+
     // ---------------------------------
     // deleting city thru post
     // ! ! !    CHECK   ! ! !
@@ -52,16 +53,28 @@ const TempManager = function () {
         const answer = await $.ajax({
             type: "DELETE",
             url: '/city' + url_id,
-            data: {cityName: argCityName},
+            data: { cityName: argCityName },
         });
         console.log("in removeCity : ")
         console.log(answer)
     }
+
+    // ----------------------------------
+    // change city state according to current state
+    // ----------------------------------
+    const changeCityState = function (argCityName) {
+        for (let i = 0; i < arrTemps.length; i++) {
+            if (arrTemps[i].name == argCityName)
+                arrTemps.isNew = !arrTemps.isNew
+        }
+    }
+    
     return {
         getDataFromDB: getDataFromDB,
         getTemps: getTemps,
         getCityData: getCityData,
         saveCity: saveCity,
-        removeCity: removeCity
+        removeCity: removeCity,
+        changeCityState: changeCityState
     }
 }

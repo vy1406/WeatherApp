@@ -51,7 +51,8 @@ class helper {
             updateAt: apiCity.current.last_updated,
             temperature: apiCity.current.temp_c,
             condition: apiCity.current.condition.text,
-            conditionPic: apiCity.current.condition.icon
+            conditionPic: apiCity.current.condition.icon,
+            isNew : false
         })
         city.save()
         console.log(`City ${city.name} was saved, with the id: ${city._id}`)

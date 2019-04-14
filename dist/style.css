@@ -23,30 +23,46 @@ body{
 
 
 .city{
-    align-content: center;
+    text-align: center;
     grid-area: cityName;
 }
 .starButton{
-    align-content: center;
+    text-align: center;
     grid-area: button;
 }
 .temperature{
-    align-content: center;
+    text-align: center;
     grid-area: temperature;
 }
 .condition{
-    align-content: center;
+    text-align: center;
     grid-area: condition;
 }
 .tempIcon{
-    align-content: center;
+    text-align: center;
     grid-area: tempIcon;
 }
 
 #searchDiv{
+    width: 100%;
+    margin: 5px;
+    
     display: grid;
-    grid-template-columns: repeat(2, 6fr);
+    grid-template-areas: "search button";
 }
 .searchInsideDiv{
+    padding: 5px;
+    border-radius: 4px;
     grid-template-columns: 10fr 2fr;
+}
+#searchCityInput{
+    width: 100%;
+    grid-area: search;
+    border-radius: 4px;
+    
+}
+#searchCityBtn{
+    width: 100%;
+    grid-area: button;
+    border-radius: 4px;
 }
