@@ -13,9 +13,8 @@ const TempManager = function () {
         console.log("In TempManager: getting the data...")
         $.get('/cities', async function (result) {
             // arrTemps = await result.cities
-            // console.log("in TempManager, sending the data from sever to client.")
-            // console.log(result)
             arrTemps = result
+            console.log(arrTemps)
             getTemps()
         })
     }
@@ -23,8 +22,8 @@ const TempManager = function () {
     // getting data from api thru my server and adding to the arrTemps
     // ! IMPORTANT ! arrTemp - lives only in this scope.. ( for now ... he he he... )
     // --------------------------------
-    const getCityData = async function () {
-        const inputVal = $("#searchCityInput").val()
+    const getCityData = async function (argCity) {
+        const inputVal = argCity
         const someCity = await $.get('/city', `cityName=${inputVal}`)
         let city = {
             name: someCity.location.name,

@@ -5,6 +5,7 @@ const Renderer = function () {
     // -----------------------------
     const renderTemps = function (temps) {
         $("#temps").empty();
+        
         addTemps(temps)
     }
 

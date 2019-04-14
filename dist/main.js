@@ -1,12 +1,19 @@
 const tempManager = TempManager()
 const renderer = Renderer()
 
-
-const post = function () {
-    console.log("in main: rendering temps!")
-    $("#searchCityBtn").on("click", tempManager.getCityData)
-    renderer.renderTemps(tempManager.getDataFromDB)
-
+const handleSearch = async function(){
+    const cityInput = $("#searchCityInput").val()
+    await tempManager.getCityData(cityInput)
+    const arr = tempManager.getTemps()
+    console.log("showing arr: ")
+    console.log(arr)
+    renderer.renderTemps(arr)
+}
+const loadPage  = function() {
+    renderer.renderTemps(tempManager.getDataFromDB())
+    $("#searchCityBtn").on("click", handleSearch)
 }
 
-post()
+
+
+loadPage()
