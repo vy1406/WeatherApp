@@ -1,2 +1,7 @@
 - use moments.js
 - use font-awesome 
+
+- insert local jquery and everything else
+
+Check : 
+- saveCity in TempManager

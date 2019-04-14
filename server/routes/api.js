@@ -26,7 +26,6 @@ router.get('/sanity', function (req, res) {
 router.get('/city', async function(req,res){
     const query = req.query
     const cityName = query.cityName
-
     const url = `http://api.apixu.com/v1/current.json?key=b2bd4bdcb0124f36bec75135191104&q=${cityName}`
     request.get(url, (error, response, body) => {
         const arg = JSON.parse(body)   
@@ -40,7 +39,7 @@ router.get('/city', async function(req,res){
 // -----------------------------------------
 
 router.get('/cities',  async function(req,res){
-    arrCities = await City.find({})
+    arrCities = await cityDao.getCities()
     res.send(arrCities)
 })
 

@@ -8,6 +8,10 @@ class helper {
         City.collection.drop()
         console.log("collection City is dropped")
     }
+    async getCities(){
+        let arr = await City.find({})
+        return arr
+    }
     // ------------------------------
     // Populating my db with some data so i can work... 
     // ------------------------------
