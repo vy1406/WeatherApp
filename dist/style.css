@@ -1,0 +1,52 @@
+body{
+    background-color: #1A659E;
+}
+
+#temp{
+    display: grid;
+    grid-gap: 1vmax;
+    grid-template-columns: repeat(1, 1fr);
+}
+.singleTemp{
+    
+    background-color: #4392F1;
+    display: grid;
+    
+    padding: 1vmax;
+    border-radius: 4px;
+    box-shadow: 1px 1px 3px black;
+    margin: 5px;
+    grid-template-areas: 
+    "button temperature tempIcon"
+    "button cityName    condition";
+}
+
+
+.city{
+    align-content: center;
+    grid-area: cityName;
+}
+.starButton{
+    align-content: center;
+    grid-area: button;
+}
+.temperature{
+    align-content: center;
+    grid-area: temperature;
+}
+.condition{
+    align-content: center;
+    grid-area: condition;
+}
+.tempIcon{
+    align-content: center;
+    grid-area: tempIcon;
+}
+
+#searchDiv{
+    display: grid;
+    grid-template-columns: repeat(2, 6fr);
+}
+.searchInsideDiv{
+    grid-template-columns: 10fr 2fr;
+}

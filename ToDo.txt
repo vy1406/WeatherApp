@@ -2,7 +2,8 @@
 - use font-awesome 
 
 - insert local jquery and everything else
+- load data on load page...
 
 Check : 
 - saveCity in TempManager
--
+- save / remove ( add it as a button )

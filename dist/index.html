@@ -1,22 +1,50 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    
+    <link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
+
 <body>
-    <h1>Main page: </h1>
-    <input type="text" id="searchCityInput" placeholder="input city...">
-    <button id="searchCityBtn">Search</button>
+    <div id="searchDiv">
+        <div class="searchInsideDiv">
+            <input type="text" id="searchCityInput" placeholder="input city...">
+        </div>
+        <div class="searchInsideDiv">
+            <button id="searchCityBtn">Search</button>
+        </div>
+    </div>
+    <div id="temp-container"></div>
+
+    <!-- ----------------------------------------------------------------- -->
+    <script id="temp-template" type="text/x-handlebars-template">
+        {{#each arrTemps}}
+            <div class="singleTemp" >
+                    <div class="starButton">
+                        0
+                    </div>
+                    <div class="cityName"> {{name}}</div>
+                    <div class="condition">{{condition}}</div>
+                    <div class="temperature">{{temperature}}</div>
+                    <div class="tempIcon">
+                        <img src="{{conditionPic}}" alt="">
+                    </div>           
+            </div>
+        {{/each}}
+    </script>
+    <!-- ----------------------------------------------------------------- -->
     <!-- <script src="../node_modules/jquery/dist/jquery.js"></script> -->
+
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
     <script src="Renderer.js"></script>
     <script src="TempManager.js"></script>
     <script src="main.js"></script>
 </body>
+
 </html>

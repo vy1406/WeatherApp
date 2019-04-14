@@ -1,19 +1,18 @@
 const tempManager = TempManager()
 const renderer = Renderer()
 
-const handleSearch = async function(){
+const handleSearch = async function () {
     const cityInput = $("#searchCityInput").val()
     await tempManager.getCityData(cityInput)
     const arr = tempManager.getTemps()
-    console.log("showing arr: ")
     console.log(arr)
     renderer.renderTemps(arr)
 }
-const loadPage  = function() {
-    renderer.renderTemps(tempManager.getDataFromDB())
+const loadPage = async function () {
+    const arr = await tempManager.getDataFromDB()
+    renderer.renderTemps(arr)
     $("#searchCityBtn").on("click", handleSearch)
 }
-
 
 
 loadPage()
