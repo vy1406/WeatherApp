@@ -30,7 +30,7 @@ const dataLoader = new helper()
 // -------------------------------
 // populate data in order to have something to work with
 // -------------------------------
-const toPopulate = true;
+let toPopulate = true;
 const populateIfFalse = function(){
     if ( toPopulate == true){
         dataLoader.populateDB_with_tempData()
